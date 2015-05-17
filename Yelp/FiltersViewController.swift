@@ -15,6 +15,7 @@ import UIKit
 class FiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var dealContainerView: UIView!
     
     weak var delegate: FiltersViewControllerDelegate?
     
@@ -24,6 +25,11 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.dealContainerView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.dealContainerView.layer.borderWidth = 1.0
+        self.dealContainerView.layer.cornerRadius = 3.0
+
+        
         categories = yelpCategories()
     }
 
@@ -38,6 +44,10 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell", forIndexPath: indexPath) as! SwitchCell
+        
+        cell.contentView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        cell.contentView.layer.borderWidth = 1.0
+        cell.contentView.layer.cornerRadius = 3.0
         
         cell.switchLabel.text = categories[indexPath.row]["name"]
         cell.delegate = self
