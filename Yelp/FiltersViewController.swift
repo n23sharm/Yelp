@@ -16,6 +16,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dealContainerView: UIView!
+    @IBOutlet weak var dealSwitch: UISwitch!
     
     weak var delegate: FiltersViewControllerDelegate?
     
@@ -255,6 +256,8 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         if selectedCategories.count > 0 {
             filters["categories"] = selectedCategories
         }
+        
+        filters["deal"] = dealSwitch.on
         
         delegate?.filtersViewController?(self, didUpdateFilter: filters)
     }

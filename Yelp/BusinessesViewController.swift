@@ -27,36 +27,13 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         searchBar.sizeToFit()
         navigationItem.titleView = searchBar
         
-        doSearch(nil)
+        doSearch(nil, deal: false)
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
-       
-        /*
-        Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
-            self.businesses = businesses
-            self.tableView.reloadData()
-            for business in businesses {
-                println(business.name!)
-                println(business.address!)
-            }
-        })
-        */
-        
-        /*
-        Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
-            self.businesses = businesses
-            self.tableView.reloadData()
-            
-            for business in businesses {
-                println(business.name!)
-                println(business.address!)
-            }
-        }
-        */
     }
     
-    private func doSearch(categories: [String]?) {
+    private func doSearch(categories: [String]?, deal: Bool?) {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
         if (categories != nil) {
@@ -91,7 +68,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        doSearch(nil)
+        doSearch(nil, deal: false)
     }
 
     
@@ -104,7 +81,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilter filters: [String : AnyObject]) {
         var categories = filters["categories"] as? [String]
-        doSearch(categories)
+        var offerDeal = filters["deal"] as? Bool
+        doSearch(categories, deal: offerDeal)
     }
 }
 
@@ -128,6 +106,6 @@ extension BusinessesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchSettings.searchString = searchBar.text
         searchBar.resignFirstResponder()
-        doSearch(nil)
+        doSearch(nil, deal: false)
     }
 }

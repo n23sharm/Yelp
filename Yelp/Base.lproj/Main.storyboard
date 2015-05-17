@@ -267,6 +267,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dealContainerView" destination="W9z-7o-3By" id="vlG-LI-7Lg"/>
+                        <outlet property="dealSwitch" destination="0w2-ye-eP3" id="zGu-8i-sjA"/>
                         <outlet property="tableView" destination="KI9-uq-tNL" id="q1N-HV-rWL"/>
                     </connections>
                 </viewController>
