@@ -19,8 +19,13 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let colour = UIColor(red: 155.0/255.0, green: 1.0/255.0, blue: 1.0/255.0, alpha: 1.0)
+        navigationController?.navigationBar.barTintColor = colour
+        navigationController?.navigationBar.topItem?.leftBarButtonItem?.tintColor = UIColor.whiteColor()
+        
         // initialize UISearchBar
         searchBar = UISearchBar()
+        searchBar.tintColor = UIColor.whiteColor()
         searchBar.delegate = self
         
         // add search bar to navigation bar

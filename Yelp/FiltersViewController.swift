@@ -25,6 +25,13 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let colour = UIColor(red: 155.0/255.0, green: 1.0/255.0, blue: 1.0/255.0, alpha: 1.0)
+        navigationController?.navigationBar.barTintColor = colour
+        navigationController?.navigationBar.topItem?.leftBarButtonItem?.tintColor = UIColor.whiteColor()
+        navigationController?.navigationBar.topItem?.rightBarButtonItem?.tintColor = UIColor.whiteColor()
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+
 
         self.dealContainerView.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.dealContainerView.layer.borderWidth = 1.0
