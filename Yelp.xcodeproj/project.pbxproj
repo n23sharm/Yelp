@@ -17,6 +17,7 @@
 		22AAAA991AEA0A9700A544AF /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AAAA981AEA0A9700A544AF /* Business.swift */; };
 		22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AAAA9B1AEA1EC300A544AF /* BusinessesViewController.swift */; };
 		3A7534D21B0932D200A65DF7 /* BusinessSearchSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7534D11B0932D200A65DF7 /* BusinessSearchSettings.swift */; };
+		3A7534D41B09A43C00A65DF7 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7534D31B09A43C00A65DF7 /* SortViewController.swift */; };
 		3AC054891B0853F70077D362 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC054881B0853F70077D362 /* FiltersViewController.swift */; };
 		3AD426D81B0806940030712D /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD426D71B0806940030712D /* BusinessCell.swift */; };
 		3AD426DA1B0852870030712D /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD426D91B0852870030712D /* SwitchCell.swift */; };
@@ -47,6 +48,7 @@
 		22AAAA981AEA0A9700A544AF /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		22AAAA9B1AEA1EC300A544AF /* BusinessesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessesViewController.swift; sourceTree = "<group>"; };
 		3A7534D11B0932D200A65DF7 /* BusinessSearchSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessSearchSettings.swift; sourceTree = "<group>"; };
+		3A7534D31B09A43C00A65DF7 /* SortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
 		3AC054881B0853F70077D362 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		3AD426D71B0806940030712D /* BusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
 		3AD426D91B0852870030712D /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				22AAAA9B1AEA1EC300A544AF /* BusinessesViewController.swift */,
 				3AC054881B0853F70077D362 /* FiltersViewController.swift */,
+				3A7534D31B09A43C00A65DF7 /* SortViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			files = (
 				3AD426D81B0806940030712D /* BusinessCell.swift in Sources */,
 				22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */,
+				3A7534D41B09A43C00A65DF7 /* SortViewController.swift in Sources */,
 				3AC054891B0853F70077D362 /* FiltersViewController.swift in Sources */,
 				22AAAA991AEA0A9700A544AF /* Business.swift in Sources */,
 				222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */,

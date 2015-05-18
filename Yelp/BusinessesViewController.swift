@@ -32,30 +32,20 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         searchBar.sizeToFit()
         navigationItem.titleView = searchBar
         
-        doSearch(nil, deal: false)
+        doSearch(nil, deal: false, sort: YelpSortMode.BestMatched)
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
     }
     
-    private func doSearch(categories: [String]?, deal: Bool?) {
+    private func doSearch(categories: [String]?, deal: Bool?, sort: YelpSortMode?) {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
-        if (categories != nil) {
-            Business.searchWithTerm(searchBar.text, sort: nil, categories: categories, deals: nil) { (businesses: [Business]!, error: NSError!) -> Void in
+        Business.searchWithTerm(searchBar.text, sort: sort, categories: categories, deals: nil) { (businesses: [Business]!, error: NSError!) -> Void in
                 self.businesses = businesses
                 self.tableView.reloadData()
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
             }
-        } else {
-            NSLog(searchBar.text)
-            Business.searchWithTerm(searchBar.text, completion: { (businesses: [Business]!, error: NSError!) -> Void in
-                self.businesses = businesses
-                self.tableView.reloadData()
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
-            })
-        }
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,7 +63,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        doSearch(nil, deal: false)
+        doSearch(nil, deal: false, sort: YelpSortMode.BestMatched)
     }
 
     
@@ -85,9 +75,14 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilter filters: [String : AnyObject]) {
-        var categories = filters["categories"] as? [String]
-        var offerDeal = filters["deal"] as? Bool
-        doSearch(categories, deal: offerDeal)
+        let categories = filters["categories"] as? [String]
+        let offerDeal = filters["deal"] as? Bool
+        let sortNum = filters["sort"] as? Int
+        var sort = YelpSortMode.BestMatched
+        if (sortNum != nil) {
+            sort = YelpSortMode(rawValue: sortNum!) ?? YelpSortMode.BestMatched
+        }
+        doSearch(categories, deal: offerDeal, sort: sort)
     }
 }
 
@@ -111,6 +106,6 @@ extension BusinessesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchSettings.searchString = searchBar.text
         searchBar.resignFirstResponder()
-        doSearch(nil, deal: false)
+        doSearch(nil, deal: false, sort: YelpSortMode.BestMatched)
     }
 }

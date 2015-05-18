@@ -12,13 +12,18 @@ import UIKit
     optional func filtersViewController(filtersViewController : FiltersViewController, didUpdateFilter filters: [String:AnyObject])
 }
 
-class FiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate {
+class FiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate, SortViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dealContainerView: UIView!
     @IBOutlet weak var dealSwitch: UISwitch!
+    @IBOutlet weak var sortContainerView: UIView!
+    
+    let tapRecognizer = UITapGestureRecognizer()
     
     weak var delegate: FiltersViewControllerDelegate?
+    
+    var sortNum: Int!
     
     var categories: [[String:String]]!
     var switchStates = [Int:Bool]()
@@ -37,13 +42,22 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         self.dealContainerView.layer.borderWidth = 1.0
         self.dealContainerView.layer.cornerRadius = 3.0
 
+        self.sortContainerView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.sortContainerView.layer.borderWidth = 1.0
+        self.sortContainerView.layer.cornerRadius = 3.0
+        
+        tapRecognizer.addTarget(self, action: "tappedSort")
+        sortContainerView.addGestureRecognizer(tapRecognizer)
         
         categories = yelpCategories()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func tappedSort() {
+        NSLog("Tapped sort")
+        let controller = SortViewController()
+        controller.modalPresentationStyle = .Popover
+        performSegueWithIdentifier("sortSegue", sender: self)
+        presentViewController(SortViewController(), animated: true, completion: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -265,9 +279,12 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         filters["deal"] = dealSwitch.on
+        filters["sort"] = sortNum
         
         delegate?.filtersViewController?(self, didUpdateFilter: filters)
     }
     
-    
+    func sortViewController(sortViewController: SortViewController, sortClicked sort: Int) {
+        sortNum = sort
+    }
 }
